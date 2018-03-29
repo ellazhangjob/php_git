@@ -2,6 +2,10 @@
     $tireqty = $_POST['tireqty']; 
     $oilqty = $_POST['oilqty']; 
     $splarkty = $_POST['splarkty']; 
+    define('TIREPRICE', 100);
+    define('OILPRICE', 10);
+    define('SPLARKPRICE', 4);
+    define('TAX', 0.13);
 ?>
 
 <!DOCTYPE html>
@@ -16,11 +20,21 @@
    <h2>Order Results</h2>
    <?php
       echo "<p>Order processed at ".date('H:i, jS F Y')."</p>";
+      
+      echo "Your order is as follows: <br />";
       echo htmlspecialchars($tireqty).' tires <br />';
       echo htmlspecialchars($oilqty).' bottles of oil <br />';
       echo htmlspecialchars($splarkty).' spark plugs <br />';
+      echo "<br />";
 
-      echo phpinfo();
+      $totalamount = $tireqty + $oilqty + $splarkty;
+      $subtotal    = $tireqty  * TIREPRICE 
+                   + $oilqty   * OILPRICE
+                   + $splarkty * SPLARKPRICE;
+      $subtotaltax = $subtotal * (1 + TAX);
+      echo "Iteams ordered: " . $totalamount . '<br />';
+      echo "Subtotal: $" .  number_format($subtotal, 2) . '<br />';
+      echo "Total including tax: $" . number_format($subtotaltax, 2);
    ?>
 </body>
 </html>
