@@ -6,6 +6,7 @@
     define('OILPRICE', 10);
     define('SPLARKPRICE', 4);
     define('TAX', 0.13);
+    $find = $_POST['find']; 
 ?>
 
 <!DOCTYPE html>
@@ -34,7 +35,34 @@
       $subtotaltax = $subtotal * (1 + TAX);
       echo "Iteams ordered: " . $totalamount . '<br />';
       echo "Subtotal: $" .  number_format($subtotal, 2) . '<br />';
-      echo "Total including tax: $" . number_format($subtotaltax, 2);
+      echo "Total including tax: $" . number_format($subtotaltax, 2) . '<br />';
+
+      switch($find) {
+          case "a" :
+              echo "<p>Regular cusotmer. </p>";
+              break;
+          case "b" :
+              echo "<p>Customer referred by Media or Advertising. </p>";
+              break;
+          case "c" :
+              echo "<p>Customer referred by Phone directory. </p>";
+              break;
+          case "d" :
+              echo "<p>Customer referred by Friends or Family. </p>";
+              break;
+          default :
+              echo "<p>We do not know how this customer found us. </p>";
+              break;
+      }
+
+      //if(isset($find)) {
+      //   if($find == "a")      echo "<p>Regular cusotmer. </p>";
+      //   elseif ($find == "b") echo "<p>Customer referred by Media or Advertising. </p>";
+      //   elseif ($find == "c") echo "<p>Customer referred by Phone directory. </p>";
+      //   elseif ($find == "d") echo "<p>Customer referred by Friends or Family. </p>";
+      //}
+   
+   
    ?>
 </body>
 </html>
