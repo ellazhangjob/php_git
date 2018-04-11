@@ -61,8 +61,6 @@
       //   elseif ($find == "c") echo "<p>Customer referred by Phone directory. </p>";
       //   elseif ($find == "d") echo "<p>Customer referred by Friends or Family. </p>";
       //}
-   
-   
    ?>
 </body>
 </html>
