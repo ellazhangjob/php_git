@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>New Book Entry</title>
+    <style type="text/css">
+        fieldset {
+            width: 75%;
+            border:2px solid #cccccc;
+        }
+        label {
+            width:  75px;
+            float:  left;
+            text-align: left;
+            font-weight: bold;
+        }
+
+        input {
+            border: 1px solid #000000;
+            padding: 3px;
+        }
+
+    </style>
+
+</head>
+<body>
+    <h1>New Book Entry</h1>
+    <form method="post" action="insert.php">
+        <fieldset>
+            <p><label for="ISBN">ISBN</label></p>
+            <input type="text" name="ISBN" id="ISBN" maxlength="13" size="13"/>
+            <p><label for="author">Author</label></p>
+            <input type="text" name="author" id="author" maxlength="13" size="13"/>
+            <p><label for="title">Title</label></p>
+            <input type="text" name="title" id="title" maxlength="13" size="13"/>
+            <p><label for="price">Price</label></p>
+            $<input type="text" name="price" id="price" maxlength="7" size="7"/>
+        </fieldset>
+        <input type="submit" value="Add New Book" />
+    </form>
+</body>
+</html>

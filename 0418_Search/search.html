@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Book Catalog Search</title>
+</head>
+<body>
+    <h1>Book Catalog Search</h1>
+
+    <form method="post" action="result.php">
+        <h3>Choose Search Type: </h3>
+        <select name="searchType">
+            <option value="Author" selected> Author </option>
+            <option value="Title"> Title </option>
+            <option value="ISBN"> ISBN </option>
+        </select>
+        <br />
+
+        <h3>Enter Search Term: </h3>
+        <input type="text" name="searchTerm" /><br />
+
+        <p><input type="submit" value="search" name="submit"></p>
+
+    </form>
+</body>
+</html>
