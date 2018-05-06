@@ -1,23 +1,12 @@
 <?php
 session_start();
 
-if($_POST){
-    $username      = $_POST['username'];
-    $password = $_POST['password'];
-}
-
-if(isset($_POST['$username']) && isset($_POST['password'])){
-    $username = $_POST['$username'];
+if(isset($_POST['username']) && isset($_POST['password'])){
+    $username = $_POST['username'];
     $password = $_POST['password'];
 
-    @$db = new mysqli('localhost', 'sandy', 'sandy123','sandy');
-    if(mysqli_connect_errno()){
-        echo "<p>Error: Could not connect to database.<br/>
-                Please try again later.</p>";
-        exit;
-    }
-
-    $query = "select username, password from authorized_users where username=? and password=?";
+    require_once("dbinfo.php");
+    $query = "select userid, password from authorized_users where userid=? and password=SHA(?)";
     $stmt  = $db->prepare($query);
     $stmt->bind_param('ss', $username, $password);
     $stmt->execute();
@@ -33,9 +22,7 @@ if(isset($_POST['$username']) && isset($_POST['password'])){
 <html>
 <head>
     <title>Home Page</title>
-    <style type="text/css">
-
-    </style>
+    <style type="text/css"></style>
 </head>
 <body>
     <h1>Home Page</h1>
@@ -44,13 +31,13 @@ if(isset($_POST['$username']) && isset($_POST['password'])){
         echo '<p>You are logged in as: ' . $_SESSION['valid_user'] . '<br />';
         echo '<a href="logout.php">Log Out</a><p>';
     } else {
-        echo $username. $password;
         if(isset($username)){
             echo '<p>Failed to login. </p>';
         }
         else{
             echo '<p>You are not logged in. </p>';
         }
+
         echo '<form action="authmain.php" method="post">';
         echo '    <fieldset>';
         echo '        <legend>Login Page</legend>';
