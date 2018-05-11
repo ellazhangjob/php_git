@@ -1,0 +1,48 @@
+body {
+    background: white;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    color: #333333;
+}
+
+.tab-panels ul {
+    margin: 0;
+    padding: 0;
+}
+
+.tab-panels ul li {
+    list-style-type: none;
+    display: inline-block;
+    background: #999;
+    margin: 0;
+    padding: 5px 25px;
+    border-radius: 10px 10px 0 0;
+    color: #fff;
+    font-weight: 200;
+    cursor: pointer;
+    text-align:center;
+    width: 80px;
+}
+
+.tab-panels ul li:hover {
+    color: #fff;
+    background: #666;
+}
+
+.tab-panels ul li.active {
+    color: #fff;
+    background: blue;
+}
+
+.tab-panels .panel {
+    display:none;
+    background: powderblue;
+    margin: 0;
+    padding: 5px 25px;
+    border-radius: 0 0 10px 10px;
+    width: 80px;
+    text-align:center;
+}
+
+.tab-panels .panel.active {
+    display:block;
+}

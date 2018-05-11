@@ -57,3 +57,7 @@ if(isset($_POST['username']) && isset($_POST['password'])){
     <p><a href="members_only.php">Go to Members Section</a></p>
 </body>
 </html>
+
+<?php
+    require ("footer.php");
+?>

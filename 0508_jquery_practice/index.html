@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Jquery test page</title>
+    <script src="jquery-3.3.1.js"></script>
+</head>
+<body>
+<div class="container">
+    <div class="jumbotron">
+        <h1>Let's Have Fun!</h1>
+        <button class="panel-button" data-panelid="panel1">#btn1</button>
+        <button class="panel-button" data-panelid="panel2">#btn2</button>
+        <button class="panel-button" data-panelid="panel3">#btn3</button>
+        <button class="panel-button" data-panelid="panel4">#btn4</button>
+    </div>
+    <div class="row">
+        <div class="col-xs-3">
+            <div id="panel1" class="panel panel-primary">
+                <div class="panel-heading">
+                    #panel1
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-xs-3">
+            <div id="panel2" class="panel panel-primary">
+                <div class="panel-heading">
+                    #panel2
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-xs-3">
+            <div id="panel3" class="panel panel-primary">
+                <div class="panel-heading">
+                    #panel3
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-xs-3">
+            <div id="panel4" class="panel panel-primary">
+                <div class="panel-heading">
+                    #panel4
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="lists">
+    <ul class="list">
+        <li>One</li>
+        <li class="special">two</li>
+        <li>three</li>
+        <li>
+            <ul class="sublist">
+                <li>1</li>
+                <li>2</li>
+                <li>3</li>
+            </ul>
+        </li>
+    </ul>
+</div>
+
+<script>
+    <!-- $(document).ready(function() {-->
+    $(function() {
+        $('.panel-button').on('click', function(){
+            var panelId = $(this).attr('data-panelid');
+            alert(panelId);
+            $('#'+panelId).toggle();
+        });
+        $('li').on('click', function () {
+            if( !$(this).is('.special')){
+                alert('not special');
+            }
+            if( $(this).is('.special')) {
+                alert('special');
+            }
+
+            if($(this).parent().is('.sublist')) {
+                $(this).hide();
+            }
+        })
+    });
+
+
+
+    selector：
+        $('li')                                                 找li元素
+        $('.sublist')                                           找class=sublist
+        $('.sublist li')                                        找class=sublist 的子元素li
+
+    Selector + 函数:
+
+        $('li').first().toggle(1000);                           li标签的第一个元素
+        $('li').last().toggle(1000);                            li标签的最后一个元素
+        $('li').eq(1).toggle(1000);                             第二个li标签，注意：index 从0开始算起
+        $('li').eq(3).children().toggle(1000);                  第四个li的孩子们，        相当于cd 子目录功能
+        $('li').eq(3).parent().toggle(1000);                    第四个li的父节点.         相当于cd..功能
+        $('li').eq(1).siblings().toggle(1000);                  第二个li标签的兄弟姐妹，   相当于ls
+        $('li').eq(1).prev().toggle(1000);                      第二个li标签的上一个兄弟元素
+        $('li').eq(1).next().toggle(1000);                      第二个li标签的下一个兄弟元素
+        $(this).closest('.list').addClass('newClassName');      ???
+
+    Event:
+        模板：
+        $('li').on('click', function () {                       隐藏光标点击的下一个节点内容
+            $(this).next().hide();
+
+            $(this).addClass('newClassName');                   给特定元素加属性 class="newClassName"
+            $(this).removeClass('newClassName');                给特定元素删除属性 class="newClassName"
+
+            $(this).find('li').addClass('newClassName');                  找到当前光标下所有li节点，加class。相当于find ./ -name li | ...
+            $(this).find('li').filter(':first').addClass('newClassName'); 找到当前光标下li节点的第一个元素，加class。相当于find ./ -name li | head -1 | ...
+        })
+    Logic:
+        $(function() {
+            $('li').on('click', function () {
+                if( !$(this).is('.special')){                   如果当前光标不是class=special的，则。。。
+                    alert('not special');
+                }
+                if( $(this).is('.special')) {                   如果当前光标是class=special的，则。。。
+                    alert('special');
+                }
+
+            })
+        });
+
+
+</script>
+</body>
+</html>

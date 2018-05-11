@@ -28,3 +28,7 @@ echo "<a href='authmain.php'> Back to Home Page </a>";
 ?>
 </body>
 </html>
+
+<?php
+require ("footer.php");
+?>
